@@ -100,10 +100,9 @@ def remove_file(file):
 def move_private_dir(src, dir_name):
     for key in private_dsts:
         if key in src:
-            target_file = os.path.join('%s%s' % (base_path, private_dsts[key]), dir_name)
-            if os.path.exists(target_file):
-                remove_file(target_file)
-            shutil.move(src, target_file)
+            if os.path.exists(os.path.join(private_dsts[key], dir_name)):
+                remove_file(os.path.join(private_dsts[key], dir_name))
+            shutil.move(src, os.path.join(private_dsts[key], dir_name))
 
 
 def move_file(src_file, dst_folder, dst_file):
@@ -124,10 +123,20 @@ def try_move_file(src_file, target_name):
         return
     if str(src_file).__contains__("私拍"):
         move_private_dir(src_file, target_name)
+        return
 
     for key in dsts:
         if str(key).lower() in src_file.lower():
             move_file(src_file, dsts[key], target_name)
+
+
+def remove_prefix(src):
+    return str(src).replace('favor-', '') \
+        .replace('f-1-', '') \
+        .replace('f-2-', '') \
+        .replace('f-3-', '') \
+        .replace('f-4-', '') \
+        .replace('f-5-', '')
 
 
 def filing(src_folder):
@@ -142,11 +151,11 @@ def filing(src_folder):
         for folder in dirs:
             try_move_file(os.path.join(root, folder), folder)
 
-            if re.match(xiuren_rex, folder):
+            if re.match(xiuren_rex, remove_prefix(folder)):
                 move_file(os.path.join(root, folder),
                           xiuren_folder, folder)
 
-            if re.match(beautyleg_rex, folder):
+            if re.match(beautyleg_rex, remove_prefix(folder)):
                 move_file(os.path.join(root, folder),
                           beautyleg_folder, folder)
 
