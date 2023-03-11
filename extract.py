@@ -30,6 +30,8 @@ passwords = [
     '996acg.com',
     '777acg.com',
     '668acg.com',
+    '987acg.com',
+    'northacg.com',
     'TMBiwM》rG0WV3Sf7hDgOGE00',
     '555',
     'cunhua',

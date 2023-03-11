@@ -3,6 +3,7 @@ import os
 import shutil
 import re
 import garbage
+import platform
 
 # mygirl_path = '/Users/michaelliu/Downloads/写真/秀人/美媛馆新特刊/'
 # mygirl = '美媛馆新特刊'
@@ -53,6 +54,7 @@ dsts = dict([('XINGYAN', '%s秀人/星颜社/' % photo_folder),
              ('FEILIN', '%s秀人/嗲囡囡/' % photo_folder),
              ('DKGirl', '%s秀人/御风行者/' % photo_folder),
              ('MFStar', '%s秀人/模范学院/' % photo_folder),
+             ('AI', '%sAI/' % photo_folder),
              ('IMiss', '%s秀人/爱蜜社/' % photo_folder),
              ('HuaYang', '%s秀人/花漾/' % photo_folder),
              ('MiStar', '%s秀人/魅妍社/' % photo_folder),
@@ -82,6 +84,21 @@ private_dsts = dict([('鱼子酱', '%s私拍/鱼子酱/' % photo_folder),
                      ('利世', '%s私拍/利世/' % photo_folder)])
 
 
+def cal_base_path():
+    global base_path
+    global base_favor_path
+    global readed_folder
+    system = platform.platform()
+    if system.lower().__contains__('macos'):
+        base_path = '/Users/michaelliu/Downloads'
+        base_favor_path = '/Users/michaelliu/Downloads/favor'
+        readed_folder = '/Users/michaelliu/Downloads/readed/'
+    if system.lower().__contains__('windows'):
+        base_path = 'e://'
+        base_favor_path = 'e://favor'
+        readed_folder = 'e://readed/'
+
+
 def is_favor(path):
     if 'f-' in path:
         return True
@@ -101,8 +118,11 @@ def move_private_dir(src, dir_name):
     for key in private_dsts:
         if key in src:
             if os.path.exists(os.path.join(private_dsts[key], dir_name)):
+                print(os.path.join(private_dsts[key], dir_name))
                 remove_file(os.path.join(private_dsts[key], dir_name))
             shutil.move(src, os.path.join(private_dsts[key], dir_name))
+            return True
+    return False
 
 
 def move_file(src_file, dst_folder, dst_file):
@@ -113,6 +133,7 @@ def move_file(src_file, dst_folder, dst_file):
     if is_favor(src_file):
         target_file = os.path.join('%s%s' % (base_favor_path, dst_folder), dst_file)
 
+    # print(target_file)
     if os.path.exists(target_file):
         remove_file(target_file)
     shutil.move(src_file, target_file)
@@ -122,8 +143,8 @@ def try_move_file(src_file, target_name):
     if not os.path.exists(src_file):
         return
     if str(src_file).__contains__("私拍"):
-        move_private_dir(src_file, target_name)
-        return
+        if move_private_dir(src_file, target_name):
+            return
 
     for key in dsts:
         if str(key).lower() in src_file.lower():
@@ -140,6 +161,9 @@ def remove_prefix(src):
 
 
 def filing(src_folder):
+    
+    cal_base_path()
+    
     for root, dirs, files in os.walk(src_folder):
         if root != src_folder:
             continue

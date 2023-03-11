@@ -73,8 +73,14 @@ def delete_garbage_if_indeed(file_name):
 
     if is_garbage(file_name):
         print("Delete garbage file " + file_name)
-        os.remove(file_name)
+        try:
+            os.remove(file_name)
+        except Exception as e:
+            print("The except is %s" % e)
 
     if is_empty_folder(file_name):
         print("Delete garbage folder " + file_name)
-        shutil.rmtree(file_name)
+        try:
+            shutil.rmtree(file_name)
+        except Exception as e:
+            print("The except is %s" % e)
