@@ -184,12 +184,11 @@ def remove_prefix(src):
         .replace('f-5-', '')
 
 
-def filing(src_folder):
-
+def filing():
     cal_base_path()
 
-    for root, dirs, files in os.walk(src_folder):
-        if root != src_folder:
+    for root, dirs, files in os.walk(readed_folder):
+        if root != readed_folder:
             continue
 
         for file in files:
@@ -197,6 +196,7 @@ def filing(src_folder):
             garbage.delete_garbage_if_indeed(os.path.join(root, file))
 
         for folder in dirs:
+            print(folder)
             try_move_file(os.path.join(root, folder), folder)
 
             if re.match(xiuren_rex, remove_prefix(folder)):
@@ -210,4 +210,4 @@ def filing(src_folder):
             garbage.delete_garbage_if_indeed(os.path.join(root, folder))
 
 
-filing(readed_folder)
+filing()
