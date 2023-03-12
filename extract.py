@@ -41,7 +41,10 @@ passwords = [
     'qingyu',
     'asianpink.net',
     'fgRZ#kF$IdhDO8c@fV',
+    '996ciyacg.com',
     'btbtt',
+    '8018',
+    '劳小白的小猫',
     None]
 root_path = "/Users/michaelliu/downloads/Download"
 

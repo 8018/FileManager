@@ -38,7 +38,7 @@ readed_folder = '/Users/michaelliu/Downloads/readed/'
 photo_folder = '/写真/'
 xiuren_folder = '/写真/秀人/秀人'
 beautyleg_folder = '/写真/Beautyleg'
-av_folder = '/你懂的/'
+av_folder = '/你懂的'
 
 dsts = dict([('XINGYAN', '%s秀人/星颜社/' % photo_folder),
              ('Yeeun', '%sothers/Son Ye-Eun/' % photo_folder),
@@ -117,10 +117,10 @@ def remove_file(file):
 def move_private_dir(src, dir_name):
     for key in private_dsts:
         if key in src:
-            if os.path.exists(os.path.join(private_dsts[key], dir_name)):
-                print(os.path.join(private_dsts[key], dir_name))
-                remove_file(os.path.join(private_dsts[key], dir_name))
-            shutil.move(src, os.path.join(private_dsts[key], dir_name))
+            target_file = os.path.join('%s%s' % (base_path, private_dsts[key]), dir_name)
+            if os.path.exists(target_file):
+                remove_file(target_file)
+            shutil.move(src, target_file)
             return True
     return False
 
@@ -161,9 +161,9 @@ def remove_prefix(src):
 
 
 def filing(src_folder):
-    
+
     cal_base_path()
-    
+
     for root, dirs, files in os.walk(src_folder):
         if root != src_folder:
             continue
