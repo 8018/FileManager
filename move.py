@@ -41,9 +41,10 @@ dsts = dict([('AI', '%sAI/' % photo_folder),
              ('beautyleg', '%sBeautyleg/' % photo_folder),
              ('Yeeun', '%sothers/Son Ye-Eun/' % photo_folder),
              ('Ye-Eun', '%sothers/Son Ye-Eun/' % photo_folder),
-             
+             ('果哥', '%s/中国/果哥/' % av_folder),
 
              ('年年', '%sModel/年年/' % photo_folder),
+             ('捷哥', '%sModel/捷哥/' % photo_folder),
              ('阿朱', '%sModel/阿朱/' % photo_folder),
              ('艺轩', '%sModel/艺轩/' % photo_folder),
              ('奶瓶', '%sModel/奶瓶/' % photo_folder),
@@ -51,13 +52,13 @@ dsts = dict([('AI', '%sAI/' % photo_folder),
              ('凯竹', '%sModel/凯竹/' % photo_folder),
              ('廿十', '%sModel/凯竹/' % photo_folder),
              ('安然', '%sModel/安然/' % photo_folder),
+             ('乔依琳', '%sModel/乔依琳/' % photo_folder),
              ('王馨瑶', '%sModel/王馨瑶/' % photo_folder),
              ('冯木木', '%sModel/冯木木/' % photo_folder),
              ('林星阑', '%sModel/林星阑/' % photo_folder),
              ('夏诗诗', '%sModel/夏诗诗/' % photo_folder),
              ('夏诗雯', '%sModel/夏诗诗/' % photo_folder),
              ('夏羲瑶', '%sModel/夏羲瑶/' % photo_folder),
-
              ('小热巴', '%sModel/小热巴/' % photo_folder),
              ('喜欢猫', '%sModel/小热巴/' % photo_folder),
              ('杨晨晨', '%sModel/杨晨晨/' % photo_folder),
@@ -90,6 +91,7 @@ dsts = dict([('AI', '%sAI/' % photo_folder),
              ('Angela00', '%sModel/小热巴/' % photo_folder),
              ('安琪Yee', '%sModel/安琪 Yee/' % photo_folder),
              ('Miko酱吖', '%sModel/Miko酱吖/' % photo_folder),
+             ('樱晚Gigi', '%sModel/樱晚Gigi/' % photo_folder),
              ('安琪 Yee', '%sModel/安琪 Yee/' % photo_folder),
              ('一颗甜蛋黄', '%sModel/一颗甜蛋黄/' % photo_folder),
 
@@ -176,6 +178,7 @@ dsts = dict([('AI', '%sAI/' % photo_folder),
              ('许诺Sabrina', '%s秀人/许诺Sabrina/' % photo_folder),
              ('果儿Victoria', '%s秀人/果儿Victoria/' % photo_folder),
 
+             ('街拍', '%s街拍/' % photo_folder),
              ('尤果网', '%sUgirls/' % photo_folder),
              ('彩画', '%s彩画/' % photo_folder),
              ('摄影', '%s摄影/' % photo_folder),
@@ -217,8 +220,7 @@ dsts = dict([('AI', '%sAI/' % photo_folder),
              ('91', '%s/中国/91/' % av_folder),
              ('中国', '%s/中国/' % av_folder),
              ('[3D]', '%s情色/彩漫/' % photo_folder),
-             ('脸红Dearie', '%s情色/脸红Dearie/' % photo_folder),
-             ('果哥', '%s/中国/果哥/' % av_folder)
+             ('脸红Dearie', '%s情色/脸红Dearie/' % photo_folder)
              ])
 
 
