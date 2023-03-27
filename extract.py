@@ -43,7 +43,9 @@ passwords = [
     'fgRZ#kF$IdhDO8c@fV',
     '996ciyacg.com',
     'btbtt',
+    '8888',
     '8018',
+    'galgamez.com',
     '劳小白的小猫',
     None]
 root_path = "/Users/michaelliu/downloads/Download"
