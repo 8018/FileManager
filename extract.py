@@ -12,9 +12,10 @@ import subprocess
 import filetype
 import py7zr
 import shutil
-from unrar import rarfile
+import rarfile
 import time
 import garbage
+import tarfile
 
 # b
 compressed_suffix = ["mtg", "mtuge", "DRT", "rar", "zip"]
@@ -48,7 +49,7 @@ passwords = [
     'galgamez.com',
     '劳小白的小猫',
     None]
-root_path = "/Users/michaelliu/downloads/Download"
+root_path = 'e://download/'
 
 
 # 判断是否是压缩文件¬
@@ -71,6 +72,8 @@ def is_contains_chinese(strs):
 def is_compressed(file):
     if str(file_type(file)) == 'rar':
         return True
+    if str(file_type(file)) == 'tar':
+        return True
     if str(file_type(file)) == 'zip':
         return True
     if str(file_type(file)) == '7z':
@@ -87,6 +90,25 @@ def extract_7z(src_file, dst_folder, password):
                 z.extractall(dst_folder)
         else:
             with py7zr.SevenZipFile(src_file, mode='r', password=password) as z:
+                z.extractall(dst_folder)
+
+        now_time = time.time()
+        print("spend time is {}".format(now_time - start_time))
+        return True
+    except Exception as e:
+        print("The except is %s" % e)
+        return False
+
+
+def extract_tar(src_file, dst_folder, password):
+    try:
+        print("tar 正在解压 %s 当前密码是 %s" % (src_file.replace(dst_folder, ''), password))
+        start_time = time.time()
+        if password is None or len(password) == 0:
+            with tarfile.open(src_file) as z:
+                z.extractall(dst_folder)
+        else:
+            with tarfile.open(src_file,  password=password) as z:
                 z.extractall(dst_folder)
 
         now_time = time.time()
@@ -168,6 +190,11 @@ def extract(src_file, dst_folder):
                 os.remove(src_file)
                 return
 
+        if file_type(src_file) == 'tar':
+            if extract_tar(src_file, dst_folder, password):
+                os.remove(src_file)
+                return
+
         if file_type(src_file) == 'rar':
             if extract_rar(src_file, dst_folder, password):
                 os.remove(src_file)
@@ -190,6 +217,7 @@ def is_empty_folder(path):
 
 
 def filing(path):
+    print("path is "+path)
     for i in range(3):
         for root, dirs, files in os.walk(path):
 
