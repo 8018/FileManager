@@ -19,9 +19,9 @@ import platform
 #             return True
 #     return False
 
-xiuren_rex = '^[0-9]{4}.(((0[13578]|(10|12)).(0[1-9]|[1-2][0-9]|3[0-1]))|(02.(0[1-9]|[1-2][0-9]))|((0[469]|11).(0[1-9]|[1-2][0-9]|30))) (No|NO|Vol|VOL).[0-9]\d* [\u4e00-\u9fa5]{1,}'
-beautyleg_rex = '^[0-9]{4}.(((0[13578]|(10|12)).(0[1-9]|[1-2][0-9]|3[0-1]))|(02.(0[1-9]|[1-2][0-9]))|((0[469]|11).(0[1-9]|[1-2][0-9]|30))) No.[1-9]\d* [a-zA-Z]{1,}'
-
+# 加 r 变为原始字符串，解决 \d 转义警告
+xiuren_rex = r'^[0-9]{4}.(((0[13578]|(10|12)).(0[1-9]|[1-2][0-9]|3[0-1]))|(02.(0[1-9]|[1-2][0-9]))|((0[469]|11).(0[1-9]|[1-2][0-9]|30))) (No|NO|Vol|VOL).[0-9]\d* [\u4e00-\u9fa5]{1,}'
+beautyleg_rex = r'^[0-9]{4}.(((0[13578]|(10|12)).(0[1-9]|[1-2][0-9]|3[0-1]))|(02.(0[1-9]|[1-2][0-9]))|((0[469]|11).(0[1-9]|[1-2][0-9]|30))) No.[1-9]\d* [a-zA-Z]{1,}'
 base_path = '/Users/michaelliu/Downloads'
 base_favor_path = '/Users/michaelliu/Downloads/favor'
 readed_folder = '/Users/michaelliu/Downloads/readed/'
@@ -56,6 +56,7 @@ dsts = dict([('AI', '%sAI/' % photo_folder),
              ('王馨瑶', '%sModel/王馨瑶/' % photo_folder),
              ('冯木木', '%sModel/冯木木/' % photo_folder),
              ('林星阑', '%sModel/林星阑/' % photo_folder),
+             ('时安安', '%sModel/时安安/' % photo_folder),
              ('夏诗诗', '%sModel/夏诗诗/' % photo_folder),
              ('夏诗雯', '%sModel/夏诗诗/' % photo_folder),
              ('夏羲瑶', '%sModel/夏羲瑶/' % photo_folder),
@@ -100,12 +101,15 @@ dsts = dict([('AI', '%sAI/' % photo_folder),
              ('曉慧', '%s秀人/筱慧/' % photo_folder),
              ('筱慧', '%s秀人/筱慧/' % photo_folder),
              ('菲儿', '%s秀人/菲儿/' % photo_folder),
+             ('软情', '%s秀人/软情/' % photo_folder),
              ('米娜', '%s秀人/米娜/' % photo_folder),
              ('美七', '%s秀人/美七/' % photo_folder),
              ('娜比', '%s秀人/娜比/' % photo_folder),
+             ('糯咪', '%s秀人/糯咪/' % photo_folder),
              ('猩一', '%s秀人/猩一/' % photo_folder),
              ('甜仔', '%s秀人/甜仔/' % photo_folder),
              ('诗诗', '%s秀人/诗诗/' % photo_folder),
+             ('汁汁', '%s秀人/汁汁/' % photo_folder),
              ('大熙', '%s秀人/大熙/' % photo_folder),
              ('大蜜', '%s秀人/大蜜/' % photo_folder),
              ('沐夕', '%s秀人/沐夕/' % photo_folder),
@@ -113,6 +117,7 @@ dsts = dict([('AI', '%sAI/' % photo_folder),
              ('林子遥', '%s秀人/林子遥/' % photo_folder),
              ('慕羽茜', '%s秀人/慕羽茜/' % photo_folder),
              ('薇薇酱', '%s秀人/薇薇酱/' % photo_folder),
+             ('梨霜儿', '%s秀人/梨霜儿/' % photo_folder),
              ('郑颖姗', '%s秀人/郑颖姗/' % photo_folder),
              ('媛媛酱', '%s秀人/媛媛酱/' % photo_folder),
              ('周妍希', '%s秀人/周妍希/' % photo_folder),
@@ -152,6 +157,7 @@ dsts = dict([('AI', '%sAI/' % photo_folder),
              ('孙梦瑶V', '%s秀人/孙梦瑶V/' % photo_folder),
              ('蜜桃酱o', '%s秀人/蜜桃酱o/' % photo_folder),
              ('Savina', '%s秀人/Savina/' % photo_folder),
+             ('Well11', '%s秀人/Well11/' % photo_folder),
              ('仓井优香', '%s秀人/仓井优香/' % photo_folder),
              ('人间荒糖', '%s秀人/人间荒糖/' % photo_folder),
              ('是小逗逗', '%s秀人/是小逗逗/' % photo_folder),
@@ -161,6 +167,8 @@ dsts = dict([('AI', '%sAI/' % photo_folder),
              ('宋-KiKi', '%s秀人/宋-KiKi/' % photo_folder),
              ('夏西CiCi', '%s秀人/夏西CiCi/' % photo_folder),
              ('Vanessa', '%s秀人/Vanessa/' % photo_folder),
+             ('白露lulu', '%s秀人/白露lulu/' % photo_folder),
+             ('朱可儿', '%s秀人/心上可Flora/' % photo_folder),
              ('郑颖姗Bev', '%s秀人/郑颖姗Bev/' % photo_folder),
              ('晗大大Via', '%s秀人/晗大大Via/' % photo_folder),
              ('心妍小公主', '%s秀人/心妍小公主/' % photo_folder),
@@ -168,6 +176,7 @@ dsts = dict([('AI', '%sAI/' % photo_folder),
              ('良人非爱人', '%s秀人/良人非爱人/' % photo_folder),
              ('绯月樱', '%s秀人/绯月樱-Cherry/' % photo_folder),
              ('luna张静燕', '%s秀人/luna张静燕/' % photo_folder),
+             ('金允希Yuki', '%s秀人/金允希Yuki/' % photo_folder),
              ('娜露Selena', '%s秀人/娜露Selena/' % photo_folder),
              ('楚恬Olivia', '%s秀人/楚恬Olivia/' % photo_folder),
              ('蓝夏Akasha', '%s秀人/蓝夏Akasha/' % photo_folder),
@@ -223,6 +232,7 @@ dsts = dict([('AI', '%sAI/' % photo_folder),
              ('神菜美舞', '%s/日本/' % av_folder),
              ('葵司', '%s/日本/' % av_folder),
              ('九色', '%s/中国/91/' % av_folder),
+             ('探花', '%s/中国/探花/' % av_folder),
              ('91', '%s/中国/91/' % av_folder),
              ('中国', '%s/中国/' % av_folder),
              ('[3D]', '%s情色/彩漫/' % photo_folder),
@@ -243,6 +253,10 @@ def cal_base_path():
         base_path = 'e://'
         base_favor_path = 'e://favor'
         readed_folder = 'e://readed/'
+    if system.lower().__contains__('linux'):
+        base_path = '/mnt/nas_nfs/'
+        base_favor_path = '/mnt/nas_nfs/favor/'
+        readed_folder = '/mnt/nas_nfs/readed/'
 
 
 def is_favor(path):
@@ -268,7 +282,7 @@ def move_file(src_file, dst_folder, dst_file):
     if is_favor(src_file):
         target_file = os.path.join('%s%s' % (base_favor_path, dst_folder), dst_file)
 
-    # print(target_file)
+    print(target_file)
     if os.path.exists(target_file):
         remove_file(target_file)
     shutil.move(src_file, target_file)
@@ -321,4 +335,8 @@ def filing():
             garbage.delete_garbage_if_indeed(os.path.join(root, folder))
 
 
-filing()
+def main():
+    filing()
+
+if __name__ == "__main__":
+    main()
